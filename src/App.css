@@ -1,0 +1,38 @@
+.App {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.counter {
+  /* margin-left: 150px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons button {
+  margin-right: 10px;
+}
+
+
+/* .App > div {
+  margin-right: 50px;
+}
+
+.error {
+  border: red 1px solid;
+}
+
+.error-message {
+  color: red;
+}
+
+.active-filter {
+  background-color: aquamarine;
+}
+
+.is-done {
+  opacity: 0.5;
+} */
