@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { AppRootStateType } from "../../store";
-import { val } from "../../enum";
+// import { val } from "../../enum";
 
 const styleValue = {
   fontFamily: "fantasy",
@@ -12,13 +12,22 @@ const styleMaxValue = {
   fontSize: "60px",
   color: "red",
 };
+const styleMinValue = {
+  fontFamily: "fantasy",
+  fontSize: "60px",
+  color: "green",
+};
 
 export const CounterValue = () => {
   const count = useSelector<AppRootStateType>((state) => state.counter.count);
+  const minValue = useSelector<AppRootStateType>((state) => state.counter.minValue);
+  const maxValue = useSelector<AppRootStateType>((state) => state.counter.maxValue);
 
   return (
     <div>
-      {count === val.MAXVALUE ? (
+      {count === minValue ? (
+        <h1 style={styleMinValue}>{count as ReactNode}</h1>
+      ) : count === maxValue ? (
         <h1 style={styleMaxValue}>{count as ReactNode}</h1>
       ) : (
         <h1 style={styleValue}>{count as ReactNode}</h1>

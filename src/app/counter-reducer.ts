@@ -1,7 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-self-assign */
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+// import { val } from "./enum";
 
 const initialState = {
   count: 0,
+  minValue: 0,
+  maxValue: 0,
 };
 
 export type initialStateType = typeof initialState;
@@ -17,7 +21,13 @@ const slice = createSlice({
       state.count = state.count - 1;
     },
     counterReset: (state) => {
-      state.count = 0;
+      state.count = state.minValue;
+    },
+    setMinValue: (state, action: PayloadAction<number>) => {
+      state.minValue = action.payload;
+    },
+    setMaxValue: (state, action: PayloadAction<number>) => {
+      state.maxValue = action.payload;
     },
   },
 });
