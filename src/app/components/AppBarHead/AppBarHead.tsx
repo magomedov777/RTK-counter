@@ -24,8 +24,8 @@ export const AppBarHead = () => {
             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={themeChange}>
               <Switch defaultChecked color="warning" />
             </IconButton>
-            <Typography variant="h6" color="yellow" component="div" fontStyle="italic">
-              $
+            <Typography variant="caption" color="yellow" component="div" fontStyle="italic">
+              blue theme
             </Typography>
           </Toolbar>
         </AppBar>
@@ -35,8 +35,8 @@ export const AppBarHead = () => {
             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={themeChange}>
               <Switch defaultChecked color="warning" />
             </IconButton>
-            <Typography variant="h6" color="black" component="div" fontStyle="italic">
-              €
+            <Typography variant="caption" color="black" component="div" fontStyle="italic">
+              violet theme
             </Typography>
           </Toolbar>
         </AppBar>
