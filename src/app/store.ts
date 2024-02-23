@@ -1,8 +1,10 @@
 import { AnyAction, ThunkAction, ThunkDispatch, combineReducers, configureStore } from "@reduxjs/toolkit";
-import { counterReducer } from "./counter-reducer";
+import { counterReducer } from "../model/counter-reducer";
+import { settingsReducer } from "../model/settings-reducer";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
+  settings: settingsReducer,
 });
 
 export const store = configureStore({

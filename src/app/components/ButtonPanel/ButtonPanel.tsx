@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Button from "@mui/material/Button/Button";
-import React, { useEffect, useState } from "react";
-// import { val } from "../../enum";
-import { counterActions } from "../../counter-reducer";
+import React, { useState } from "react";
+import { counterActions } from "../../../model/counter-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "../../store";
 
 export const ButtonPanel = () => {
   const dispatch = useDispatch();
-  const minValue = useSelector<AppRootStateType>((state) => state.counter.minValue);
-  const maxValue = useSelector<AppRootStateType>((state) => state.counter.maxValue);
+  const minValue = useSelector<AppRootStateType, number>((state) => state.settings.minValue);
+  const maxValue = useSelector<AppRootStateType, number>((state) => state.settings.maxValue);
   const count = useSelector<AppRootStateType>((state) => state.counter.count);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>("");
 
   const increase = () => {
     if (count === maxValue) {
@@ -23,7 +22,7 @@ export const ButtonPanel = () => {
   };
 
   const decrease = () => {
-    if (count === maxValue) return 0;
+    if (count === minValue) return;
     dispatch(counterActions.counterDec());
   };
 
@@ -33,7 +32,7 @@ export const ButtonPanel = () => {
       return;
     }
     setError("");
-    dispatch(counterActions.counterReset());
+    dispatch(counterActions.counterReset({ minValue, maxValue }));
   };
 
   return (
