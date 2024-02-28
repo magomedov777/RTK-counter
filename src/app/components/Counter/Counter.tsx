@@ -2,12 +2,13 @@
 
 import { CounterValue } from "../CounterValue/CounterValue";
 import { ButtonPanel } from "../ButtonPanel/ButtonPanel";
+import { memo } from "react";
 
-export const Counter = () => {
+export const Counter = memo(() => {
   return (
     <div className="counter">
       <CounterValue />
       <ButtonPanel />
     </div>
   );
-};
+});

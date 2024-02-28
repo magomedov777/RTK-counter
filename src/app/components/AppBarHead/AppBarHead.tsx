@@ -5,10 +5,10 @@ import IconButton from "@mui/material/IconButton/IconButton";
 import Switch from "@mui/material/Switch/Switch";
 import Toolbar from "@mui/material/Toolbar/Toolbar";
 import Typography from "@mui/material/Typography/Typography";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import s from "./style.module.css";
 
-export const AppBarHead = () => {
+export const AppBarHead = memo(() => {
   const storedTheme = localStorage.getItem("theme");
   const initialTheme = storedTheme ? JSON.parse(storedTheme) : "dark";
   const [theme, setTheme] = useState<string | boolean>(initialTheme);
@@ -53,4 +53,4 @@ export const AppBarHead = () => {
       )}
     </header>
   );
-};
+});

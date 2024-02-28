@@ -1,26 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import FormControl from "@mui/material/FormControl/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput/OutlinedInput";
-import React, { ChangeEvent, KeyboardEvent, useState } from "react";
+import React, { ChangeEvent, memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { counterActions } from "../../model/counter-reducer";
 import { AppRootStateType } from "../store";
 import { settingsActions } from "../../model/settings-reducer";
 
-export const SettingsPannel = () => {
+export const SettingsPannel = memo(() => {
   const dispatch = useDispatch();
   const minValue = useSelector<AppRootStateType>((state) => state.settings.minValue);
   const maxValue = useSelector<AppRootStateType>((state) => state.settings.maxValue);
 
-  const changeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeMinValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     let setValue = +e.currentTarget.value;
     dispatch(settingsActions.setMinValue({ minValue: setValue }));
-  };
+  }, []);
 
-  const changeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeMaxValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     let setValue = +e.currentTarget.value;
     dispatch(settingsActions.setMaxValue({ maxValue: setValue }));
-  };
+  }, []);
 
   return (
     <div
@@ -49,4 +49,4 @@ export const SettingsPannel = () => {
       <br />
     </div>
   );
-};
+});
