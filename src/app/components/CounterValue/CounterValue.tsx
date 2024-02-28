@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, memo } from "react";
 import { useSelector } from "react-redux";
 import { AppRootStateType } from "../../store";
 
@@ -17,7 +17,7 @@ const styleMinValue = {
   color: "green",
 };
 
-export const CounterValue = () => {
+export const CounterValue = memo(() => {
   const count = useSelector<AppRootStateType>((state) => state.counter.count);
   const minValue = useSelector<AppRootStateType>((state) => state.settings.minValue);
   const maxValue = useSelector<AppRootStateType>((state) => state.settings.maxValue);
@@ -33,4 +33,4 @@ export const CounterValue = () => {
       )}
     </div>
   );
-};
+});

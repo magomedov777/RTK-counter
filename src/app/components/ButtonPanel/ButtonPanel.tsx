@@ -1,39 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Button from "@mui/material/Button/Button";
-import React, { useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { counterActions } from "../../../model/counter-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "../../store";
 
-export const ButtonPanel = () => {
+export const ButtonPanel = memo(() => {
   const dispatch = useDispatch();
   const minValue = useSelector<AppRootStateType, number>((state) => state.settings.minValue);
   const maxValue = useSelector<AppRootStateType, number>((state) => state.settings.maxValue);
   const count = useSelector<AppRootStateType>((state) => state.counter.count);
   const [error, setError] = useState<string | null>("");
 
-  const increase = () => {
+  const increase = useCallback(() => {
     if (count === maxValue) {
       setError("MAX Value");
       return maxValue;
     }
     dispatch(counterActions.counterInc());
     setError("");
-  };
+  }, []);
 
-  const decrease = () => {
+  const decrease = useCallback(() => {
     if (count === minValue) return;
     dispatch(counterActions.counterDec());
-  };
+  }, []);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     if (count === minValue) {
       setError("ERRROR");
       return;
     }
     setError("");
     dispatch(counterActions.counterReset({ minValue, maxValue }));
-  };
+  }, []);
 
   return (
     <div className="buttons">
@@ -67,4 +68,4 @@ export const ButtonPanel = () => {
       )}
     </div>
   );
-};
+});

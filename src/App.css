@@ -20,6 +20,16 @@ body {
   margin-right: 10px;
 }
 
+.time {
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+  cursor: pointer;
+}
+
+.time:hover {
+  color: goldenrod;
+}
 
 /* .App > div {
   margin-right: 50px;
